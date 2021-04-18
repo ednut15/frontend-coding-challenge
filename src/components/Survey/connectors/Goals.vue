@@ -38,6 +38,11 @@
         }
       }
     },
+    computed: {
+      name () {
+        return this.$store.state.survey.name
+      }
+    },
     methods: {
       submit () {
         this.$router.push('/diet')
