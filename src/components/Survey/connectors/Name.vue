@@ -16,7 +16,13 @@
     methods: {
       submit () {
         this.$store.commit('survey/updateName', this.name)
-        this.$router.push('/goals')
+        console.log(this.$store.state.survey.name)
+        this.$router.push({
+          name: 'goals',
+          params: {
+            name: this.$store.state.survey.name
+          }
+        })
       }
     }
   }

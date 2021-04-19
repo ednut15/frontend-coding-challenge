@@ -35,12 +35,8 @@
           improveWeight: {
             name: 'Weight'
           }
-        }
-      }
-    },
-    computed: {
-      name () {
-        return this.$store.state.survey.name
+        },
+        checkedGoals: []
       }
     },
     methods: {
@@ -61,7 +57,7 @@
         <h1>Nice to meet you {{ name }}. What would you like to focus on?</h1>
         <p class="body--large question-description">Choose up to four</p>
         <div class="spacer sp__top--sm"></div>
-        <check-button v-for="(goal, key) in goals" :key="key" :text="goal.name"></check-button>
+        <check-button v-for="(goal, key) in goals" :key="key" :text="goal.name" :value="key"></check-button>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">
