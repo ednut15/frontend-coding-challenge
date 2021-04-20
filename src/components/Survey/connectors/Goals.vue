@@ -36,12 +36,13 @@
             name: 'Weight'
           }
         },
-        checkedGoals: []
+        checkedGoals: this.$store.state.survey.goals
       }
     },
     methods: {
       submit () {
         if (this.checkedGoals.length <= 4) {
+          this.$store.commit('survey/updateGoals', this.checkedGoals)
           this.$router.push('/diet')
         }
       },

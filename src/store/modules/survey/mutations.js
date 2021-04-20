@@ -1,10 +1,14 @@
 export default {
   updateName (state, name) {
-    this.state.survey.name = name
+    state.name = name
   },
-
-  updateGoals (state, { goals }) {
+  updateGoals (state, goals) {
     console.log(goals)
     state.goals = goals
+  },
+  updateDiet (state, diet) {
+    console.log(diet)
+    state.diet = diet
+    console.log(state)
   }
 }
