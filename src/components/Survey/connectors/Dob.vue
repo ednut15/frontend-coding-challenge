@@ -10,7 +10,7 @@
     },
     data () {
       return {
-        dob: this.$store.state.survey.dob
+        dob: this.$store.getters['survey/getDob']
       }
     },
     computed: {

@@ -33,7 +33,12 @@
             name: 'Other'
           }
         },
-        checkedDiet: this.$store.state.survey.diet === '' ? [] : [this.$store.state.survey.diet]
+        checkedDiet: this.$store.getters['survey/getDiet'] === '' ? [] : [this.$store.getters['survey/getDiet']]
+      }
+    },
+    computed: {
+      disableNext () {
+        return this.checkedDiet.length === 0
       }
     },
     methods: {
@@ -66,7 +71,7 @@
             </div>
           </div>
           <div class="cell auto align-right">
-            <thv-button element="button" size="large" @click="submit">Next</thv-button>
+            <thv-button element="button" size="large" @click="submit" :disabled="disableNext">Next</thv-button>
           </div>
         </div>
       </div>

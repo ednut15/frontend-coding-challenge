@@ -36,7 +36,12 @@
             name: 'Weight'
           }
         },
-        checkedGoals: this.$store.state.survey.goals
+        checkedGoals: this.$store.getters['survey/getGoals']
+      }
+    },
+    computed: {
+      disableNext () {
+        return this.checkedGoals.length === 0
       }
     },
     methods: {
@@ -70,7 +75,7 @@
             </div>
           </div>
           <div class="cell auto align-right">
-            <thv-button element="button" size="large" @click="submit">Next</thv-button>
+            <thv-button element="button" size="large" @click="submit" :disabled="disableNext">Next</thv-button>
           </div>
         </div>
       </div>
