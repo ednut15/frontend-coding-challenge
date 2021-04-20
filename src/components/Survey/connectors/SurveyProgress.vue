@@ -8,7 +8,7 @@
     },
     data () {
       return {
-        stages: ['Name', 'Goals', 'Diet', 'dob'],
+        stages: ['name', 'goals', 'diet', 'dob']
       }
     },
     computed: {

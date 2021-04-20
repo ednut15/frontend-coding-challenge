@@ -1,8 +1,6 @@
 export default {
   nextStage (state) {
-    console.log(state)
     this.state.currentStep++
-    console.log(state)
   },
   previousStage (state) {
     this.state.currentStep--
@@ -17,8 +15,6 @@ export default {
     state.diet = diet
   },
   updateDob (state, dob) {
-    console.log(dob)
     state.dob = dob
-    console.log(state)
   }
 }

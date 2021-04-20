@@ -16,7 +16,6 @@
     computed: {
       disableNext () {
         let under18 = this.$refs.DobInput && this.$refs.DobInput.ageError
-        console.log(under18, this.errors.items.length, this.dob)
         return this.dob === '' || this.errors.items.length > 0 || under18 === true
       },
       feedback () {
@@ -34,7 +33,13 @@
           if (result && !this.feedback) {
             this.$store.commit('survey/updateDob', this.dob)
             this.$store.commit('survey/nextStage')
-            this.$router.push('/success')
+            this.$store.dispatch('survey/sendToApi', { user: { ...this.$store.state.survey } })
+              .then((result) => {
+                console.log(result)
+                this.$router.push('/success')
+              }).catch((error) => {
+                console.log(error)
+              })
           }
         })
       },

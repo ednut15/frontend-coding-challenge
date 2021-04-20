@@ -17,7 +17,6 @@ app.post('/users', (req, res) => {
   if (body.user) {
     const fieldsCheck = checkUserFields(body.user, res)
     const valuesCheck = checkValidFieldValues(body.user, res)
-
     if (fieldsCheck && valuesCheck) {
       successResponse(res)
     }
