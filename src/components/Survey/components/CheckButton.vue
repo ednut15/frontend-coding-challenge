@@ -24,7 +24,7 @@
         default: false
       },
       limit: {
-        type: Number,
+        type: Number
       }
     },
     computed: {
