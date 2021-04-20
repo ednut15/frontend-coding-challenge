@@ -32,7 +32,6 @@
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
             this.$store.commit('survey/updateDob', this.dob)
-            this.$store.commit('survey/nextStage')
             this.$store.dispatch('survey/sendToApi', { user: { ...this.$store.state.survey } })
               .then((result) => {
                 console.log(result)
@@ -44,7 +43,6 @@
         })
       },
       back () {
-        this.$store.commit('survey/previousStage')
         this.$router.push('/diet')
       }
     }

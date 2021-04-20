@@ -8,12 +8,13 @@
     },
     data () {
       return {
-        stages: ['name', 'goals', 'diet', 'dob']
+        stages: ['name', 'goals', 'diet', 'dob', 'success']
       }
     },
     computed: {
       currentStep () {
-        return this.$store.state.currentStep
+        let pageName = this.$route.name
+        return this.stages.indexOf(pageName) + 1
       }
     }
   }

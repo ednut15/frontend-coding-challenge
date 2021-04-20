@@ -48,12 +48,10 @@
       submit () {
         if (this.checkedGoals.length <= 4) {
           this.$store.commit('survey/updateGoals', this.checkedGoals)
-          this.$store.commit('survey/nextStage')
           this.$router.push('/diet')
         }
       },
       back () {
-        this.$store.commit('survey/previousStage')
         this.$router.push('/name')
       }
     }

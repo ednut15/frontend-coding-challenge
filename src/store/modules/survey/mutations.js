@@ -1,10 +1,4 @@
 export default {
-  nextStage (state) {
-    this.state.currentStep++
-  },
-  previousStage (state) {
-    this.state.currentStep--
-  },
   updateName (state, name) {
     state.name = name
   },
