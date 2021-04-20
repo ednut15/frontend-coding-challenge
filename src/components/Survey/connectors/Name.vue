@@ -10,12 +10,13 @@
     },
     data () {
       return {
-        name: ''
+        name: this.$store.state.survey.name
       }
     },
     methods: {
       submit () {
         this.$store.commit('survey/updateName', this.name)
+        this.$store.commit('survey/nextStage')
         console.log(this.$store.state.survey.name)
         this.$router.push({
           name: 'goals',

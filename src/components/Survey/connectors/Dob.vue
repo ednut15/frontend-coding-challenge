@@ -33,11 +33,13 @@
         this.$validator.validate().then(result => {
           if (result && !this.feedback) {
             this.$store.commit('survey/updateDob', this.dob)
+            this.$store.commit('survey/nextStage')
             this.$router.push('/success')
           }
         })
       },
       back () {
+        this.$store.commit('survey/previousStage')
         this.$router.push('/diet')
       }
     }

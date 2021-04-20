@@ -1,4 +1,12 @@
 export default {
+  nextStage (state) {
+    console.log(state)
+    this.state.currentStep++
+    console.log(state)
+  },
+  previousStage (state) {
+    this.state.currentStep--
+  },
   updateName (state, name) {
     state.name = name
   },

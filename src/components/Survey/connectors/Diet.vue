@@ -33,17 +33,19 @@
             name: 'Other'
           }
         },
-        checkedDiet: this.$store.state.survey.diet
+        checkedDiet: this.$store.state.survey.diet === '' ? [] : [this.$store.state.survey.diet]
       }
     },
     methods: {
       submit () {
         if (this.checkedDiet.length === 1) {
-          this.$store.commit('survey/updateDiet', this.checkedDiet)
+          this.$store.commit('survey/updateDiet', this.checkedDiet[0])
+          this.$store.commit('survey/nextStage')
           this.$router.push('/dob')
         }
       },
       back () {
+        this.$store.commit('survey/previousStage')
         this.$router.push('/goals')
       }
     }
