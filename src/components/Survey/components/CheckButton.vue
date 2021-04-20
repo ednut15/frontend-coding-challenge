@@ -1,6 +1,10 @@
 <script>
   export default {
     name: 'CheckButton',
+    model: {
+      prop: 'modelValue',
+      event: 'change'
+    },
     props: {
       text: {
         type: String,
@@ -10,18 +14,57 @@
         type: String,
         required: true
       },
-      selected: {
-        type: Boolean,
+      modelValue: {
+        default: ''
+      },
+      trueValue: {
+        default: true
+      },
+      falseValue: {
         default: false
+      },
+      limit: {
+        type: Number,
+      }
+    },
+    computed: {
+      isSelected () {
+        if (this.modelValue instanceof Array) {
+          return this.modelValue.includes(this.value)
+        }
+        return this.modelValue === this.trueValue
+      },
+      isDisabled () {
+        return (!!(this.limit && this.modelValue.length > this.limit - 1)) && this.modelValue.indexOf(this.value) === -1
+      }
+    },
+    methods: {
+      updateInput (event) {
+        let isSelected = event.target.checked
+        if (this.modelValue instanceof Array) {
+          let newValue = [...this.modelValue]
+          if (isSelected) {
+            newValue.push(this.value)
+          } else {
+            newValue.splice(newValue.indexOf(this.value), 1)
+          }
+          this.$emit('change', newValue)
+        } else {
+          this.$emit('change', isSelected ? this.trueValue : this.falseValue)
+        }
       }
     }
   }
 </script>
 
-<template>  
-  <div class="check-button" :class="{ 'check-button--selected': selected }" tabindex="0">
-    <p class="check-button__text body--large">{{ text }}</p>
-  </div>
+<template>
+  <label>
+    <div class="check-button" :class="{ 'check-button--selected': isSelected, 'check-button--disabled': isDisabled }" tabindex="0">
+      <p class="check-button__text body--large">{{ text }}</p>
+      <input class="checkbox" type="checkbox" :checked="isSelected" :value="value" @change="updateInput"
+             :disabled="isDisabled"/>
+    </div>
+  </label>
 </template>
 
 <style lang="css">
@@ -37,9 +80,15 @@
     font-weight: 400;
     transition: .2s;
     padding: 0 10px;
-    border-radius: .25rem;        
+    border-radius: .25rem;
   }
-
+  .check-button input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
   @media (min-width: 768px) {
     .check-button {
       height: 120px;
