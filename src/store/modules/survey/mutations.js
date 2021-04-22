@@ -1,3 +1,4 @@
+
 export default {
   updateName (state, name) {
     state.name = name
@@ -10,5 +11,13 @@ export default {
   },
   updateDob (state, dob) {
     state.dob = dob
+  },
+  resetState (state) {
+    Object.assign(state, {
+      name: '',
+      goals: [],
+      diet: '',
+      dob: ''
+    })
   }
 }

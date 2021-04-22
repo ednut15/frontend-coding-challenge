@@ -63,6 +63,7 @@ const router = new Router({
           name: 'success',
           path: 'success',
           component: Survey.connectors.Success,
+          props: true,
           meta: {
             layout: MinimalLayout,
             authenticated: false

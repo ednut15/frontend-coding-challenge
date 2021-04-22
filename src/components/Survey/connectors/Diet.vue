@@ -61,7 +61,7 @@
       <div class="survey-questions__diet align-center">
         <h1>Do you follow a particular diet?</h1>
         <div class="spacer sp__top--sm"></div>
-        <check-button v-for="(diet, key) in diets" :key="key" :text="diet.name" :value="key" v-model="checkedDiet" :limit="1"></check-button>
+        <check-button v-for="(diet, key) in diets" :key="key" :text="diet.name" :value="diet.name" v-model="checkedDiet" :limit="1"></check-button>
         <div class="grid-x button-container">
           <div class="cell auto">
             <div class="back-button-container">

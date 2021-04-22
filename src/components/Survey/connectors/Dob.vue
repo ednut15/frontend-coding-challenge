@@ -34,8 +34,12 @@
             this.$store.commit('survey/updateDob', this.dob)
             this.$store.dispatch('survey/sendToApi', { user: { ...this.$store.state.survey } })
               .then((result) => {
-                console.log(result)
-                this.$router.push('/success')
+                this.$router.push({
+                  name: 'success',
+                  params: {
+                    ...JSON.parse(result.config.data).user
+                  }
+                })
               }).catch((error) => {
                 console.log(error)
               })
