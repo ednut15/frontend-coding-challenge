@@ -15,7 +15,7 @@
         required: true
       },
       modelValue: {
-        default: ''
+        default: []
       },
       trueValue: {
         default: true
@@ -58,7 +58,7 @@
 </script>
 
 <template>
-  <label>
+  <label class="check-button__label">
     <div class="check-button" :class="{ 'check-button--selected': isSelected, 'check-button--disabled': isDisabled }" tabindex="0">
       <p class="check-button__text body--large">{{ text }}</p>
       <input class="checkbox" type="checkbox" :checked="isSelected" :value="value" @change="updateInput"
